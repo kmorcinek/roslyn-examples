@@ -31,6 +31,34 @@ public class WhereCountRewriterTests
     }
 
     [Fact]
+    public void Rewrites_WhereCount_On_Different_Lines()
+    {
+        var source = """
+            using System.Linq;
+            using System.Collections.Generic;
+
+            var list = new List<int> { 1, 2, 3 };
+            var result = list
+                .Where(x => x > 1)
+                .Count();
+            """;
+
+        var expected = """
+            using System.Linq;
+            using System.Collections.Generic;
+
+            var list = new List<int> { 1, 2, 3 };
+            var result = list
+                .Count(x => x > 1);
+            """;
+
+        var (newSource, count) = Refactorer.RefactorSource(source);
+
+        Assert.Equal(1, count);
+        Assert.Equal(expected, newSource);
+    }
+
+    [Fact]
     public void Does_Not_Rewrite_Count_Without_Where()
     {
         var source = """

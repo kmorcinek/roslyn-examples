@@ -45,7 +45,7 @@ public class WhereCountRewriter : CSharpSyntaxRewriter
 
         var newNode = node
             .WithExpression(
-                countAccess.WithExpression(collection.WithoutTrailingTrivia()))
+                countAccess.WithExpression(collection))
             .WithArgumentList(
                 SyntaxFactory.ArgumentList(
                     SyntaxFactory.SingletonSeparatedList(predicate)))

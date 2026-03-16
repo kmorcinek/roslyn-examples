@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WhereCountRefactorer.Tests/WhereCountRefactorer.Tests.csproj" />
+  <Project Path="WhereCountRefactorer/WhereCountRefactorer.csproj" />
+</Solution>

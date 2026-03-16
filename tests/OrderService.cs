@@ -15,13 +15,13 @@ public class OrderService
     public int GetPendingOrderCount()
     {
         // Should be refactored: Where + Count -> Count
-        return _orders.Count(o => o.Status == "Pending");
+        return _orders.Where(o => o.Status == "Pending").Count();
     }
 
     public int GetExpensiveOrderCount(decimal threshold)
     {
         // Should be refactored: Where + Count -> Count
-        return _orders.Count(o => o.Total > threshold);
+        return _orders.Where(o => o.Total > threshold).Count();
     }
 
     public int GetTotalOrders()

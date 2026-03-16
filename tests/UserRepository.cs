@@ -15,13 +15,13 @@ public class UserRepository
     public int CountActiveUsers()
     {
         // Should be refactored: Where + Count -> Count
-        return _users.Count(u => u.IsActive);
+        return _users.Where(u => u.IsActive).Count();
     }
 
     public int CountAdmins()
     {
         // Should be refactored: Where + Count -> Count
-        return _users.Count(u => u.Role == "Admin");
+        return _users.Where(u => u.Role == "Admin").Count();
     }
 
     public bool HasAnyUser()

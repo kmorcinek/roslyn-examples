@@ -25,6 +25,10 @@ public static class Refactorer
                 Console.WriteLine($"  [{replaced} change(s)] {file}");
                 total += replaced;
             }
+            else
+            {
+                Console.WriteLine($"  [no changes]    {file}");
+            }
         }
 
         return total;

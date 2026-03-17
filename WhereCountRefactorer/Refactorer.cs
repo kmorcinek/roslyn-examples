@@ -14,7 +14,9 @@ public static class Refactorer
         if (!Directory.Exists(rootPath))
             throw new DirectoryNotFoundException($"Directory not found: {rootPath}");
 
-        var csFiles = Directory.EnumerateFiles(rootPath, "*.cs", SearchOption.AllDirectories);
+        var csFiles = Directory.EnumerateFiles(rootPath, "*.cs", SearchOption.AllDirectories)
+            .Where(f => !f.EndsWith(".Designer.cs", StringComparison.OrdinalIgnoreCase)
+                     && !f.EndsWith("Reference.cs", StringComparison.OrdinalIgnoreCase));
         int total = 0;
 
         foreach (var file in csFiles)

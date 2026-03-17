@@ -16,7 +16,9 @@ public static class Refactorer
 
         var csFiles = Directory.EnumerateFiles(rootPath, "*.cs", SearchOption.AllDirectories)
             .Where(f => !f.EndsWith(".Designer.cs", StringComparison.OrdinalIgnoreCase)
-                     && !f.EndsWith("Reference.cs", StringComparison.OrdinalIgnoreCase));
+                     && !f.EndsWith("Reference.cs", StringComparison.OrdinalIgnoreCase)
+                     && !f.EndsWith("AssemblyInfo.cs", StringComparison.OrdinalIgnoreCase)
+                     && !f.Split(Path.DirectorySeparatorChar).Any(part => part == "obj"));
         int total = 0;
         var changed = new List<(string File, int Count)>();
 

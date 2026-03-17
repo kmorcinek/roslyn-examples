@@ -18,7 +18,7 @@ public static class Refactorer
             .Where(f => !f.EndsWith(".Designer.cs", StringComparison.OrdinalIgnoreCase)
                      && !f.EndsWith("Reference.cs", StringComparison.OrdinalIgnoreCase)
                      && !f.EndsWith("AssemblyInfo.cs", StringComparison.OrdinalIgnoreCase)
-                     && !f.Split(Path.DirectorySeparatorChar).Any(part => part == "obj"));
+                     && !f.Split(Path.DirectorySeparatorChar).Any(part => part == "obj" || part == "Migrations"));
         int total = 0;
         var changed = new List<(string File, int Count)>();
 

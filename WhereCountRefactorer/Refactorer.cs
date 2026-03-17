@@ -18,13 +18,14 @@ public static class Refactorer
             .Where(f => !f.EndsWith(".Designer.cs", StringComparison.OrdinalIgnoreCase)
                      && !f.EndsWith("Reference.cs", StringComparison.OrdinalIgnoreCase));
         int total = 0;
+        var changed = new List<(string File, int Count)>();
 
         foreach (var file in csFiles)
         {
             var replaced = RefactorFile(file);
             if (replaced > 0)
             {
-                Console.WriteLine($"  [{replaced} change(s)] {file}");
+                changed.Add((file, replaced));
                 total += replaced;
             }
             else
@@ -32,6 +33,10 @@ public static class Refactorer
                 Console.WriteLine($"  [no changes]    {file}");
             }
         }
+
+        Console.WriteLine();
+        foreach (var (file, count) in changed)
+            Console.WriteLine($"  [{count} change(s)] {file}");
 
         return total;
     }

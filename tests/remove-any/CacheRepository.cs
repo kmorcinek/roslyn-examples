@@ -1,11 +1,12 @@
 using System;
 using System.Linq;
+using System.Data.Entity;
 
 namespace SampleApp;
 
 public class CacheRepository
 {
-    private readonly IQueryable<CacheEntry> DbSet;
+    private readonly DbSet<CacheEntry> DbSet;
 
     public void RemoveExpired(TimeSpan timespan)
     {

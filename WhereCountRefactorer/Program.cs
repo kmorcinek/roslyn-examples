@@ -25,6 +25,11 @@ try
     Console.WriteLine("Pattern: IQueryable<T>.Any()  →  should have predicate");
     int detected = QueryableAnyDetector.DetectDirectory(path);
     Console.WriteLine($"Done. Total detections: {detected}");
+    Console.WriteLine();
+
+    Console.WriteLine("Pattern: var x = *.Where(...)  +  x.Any()  →  should have predicate");
+    int detected2 = WhereVarAnyDetector.DetectDirectory(path);
+    Console.WriteLine($"Done. Total detections: {detected2}");
 
     return 0;
 }

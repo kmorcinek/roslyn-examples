@@ -22,7 +22,7 @@ public class CacheRepository
         }
     }
     
-    public void WorkOnQuerable(IQuerable<CacheEntry> query)
+    public void WorkOnQueryable(IQueryable<CacheEntry> query)
     {
         if (!query.Any())
         {

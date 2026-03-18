@@ -21,6 +21,18 @@ public class CacheRepository
             DbSet.Remove(entry);
         }
     }
+    
+    public void WorkOnQuerable(IQuerable<CacheEntry> query)
+    {
+        if (!query.Any())
+        {
+            return;
+        }
+        foreach (var entry in query)
+        {
+            DbSet.Remove(entry);
+        }
+    }
 }
 
 public class CacheEntry

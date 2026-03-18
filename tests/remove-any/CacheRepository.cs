@@ -11,7 +11,7 @@ public class CacheRepository
     public void RemoveExpired(TimeSpan timespan)
     {
         var expiredDate = DateTime.UtcNow.Add(-timespan);
-        var expiredEntries = DbSet.Where(x => x.Created < expiredDate);
+        IQueryable<CacheEntry> expiredEntries = DbSet.Where(x => x.Created < expiredDate);
         if (!expiredEntries.Any())
         {
             return;

@@ -56,6 +56,17 @@ public class WhereAnyDetector : CSharpSyntaxWalker
         DetectionCount++;
     }
 
+    /// <summary>
+    /// Detects occurrences in a source string. Exposed for unit testing.
+    /// </summary>
+    public static int DetectSource(string source)
+    {
+        var tree = CSharpSyntaxTree.ParseText(source);
+        var detector = new WhereAnyDetector("<test>", tree);
+        detector.Visit(tree.GetRoot());
+        return detector.DetectionCount;
+    }
+
     public static int DetectDirectory(string rootPath)
     {
         if (!Directory.Exists(rootPath))

@@ -18,6 +18,10 @@ try
     // Console.WriteLine($"Done. Total replacements: {refactored}");
     // Console.WriteLine();
 
+    // Console.WriteLine("Pattern: .Where(predicate).Any()  →  .Any(predicate)");
+    // int detected = WhereAnyDetector.DetectDirectory(path);
+    // Console.WriteLine($"Done. Total detections: {detected}");
+
     Console.WriteLine("Pattern: IQueryable<T>.Any()  →  should have predicate");
     int detected = QueryableAnyDetector.DetectDirectory(path);
     Console.WriteLine($"Done. Total detections: {detected}");

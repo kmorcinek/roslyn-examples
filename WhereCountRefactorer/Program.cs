@@ -8,15 +8,20 @@ if (args.Length != 1)
 
 var path = args[0];
 
-Console.WriteLine($"Refactoring: {path}");
-Console.WriteLine("Pattern: .Where(predicate).Count()  →  .Count(predicate)");
+Console.WriteLine($"Analyzing: {path}");
 Console.WriteLine();
 
 try
 {
-    int total = Refactorer.RefactorDirectory(path);
-    Console.WriteLine();
-    Console.WriteLine($"Done. Total replacements: {total}");
+    // Console.WriteLine("Pattern: .Where(predicate).Count()  →  .Count(predicate)");
+    // int refactored = Refactorer.RefactorDirectory(path);
+    // Console.WriteLine($"Done. Total replacements: {refactored}");
+    // Console.WriteLine();
+
+    Console.WriteLine("Pattern: .Where(predicate).Any()  →  .Any(predicate)");
+    int detected = WhereAnyDetector.DetectDirectory(path);
+    Console.WriteLine($"Done. Total detections: {detected}");
+
     return 0;
 }
 catch (Exception ex)
